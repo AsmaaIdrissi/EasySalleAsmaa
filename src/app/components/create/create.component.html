@@ -1,0 +1,82 @@
+<div class="container-about" *ngIf="salle">
+  <h2>{{title}}</h2>
+  <div class="message succes" *ngIf="status == 'succes'">
+    La salle a bien été créee, pour voir les details, click<a [routerLink]="['/salle', save_salle._id]"> ici</a>
+  </div>
+
+  <div class="message failed" *ngIf="status == 'failed'">
+    La  salle n'a pas pu étre créee
+  </div>
+
+
+  <form #salleForm="ngForm" (ngSubmit)="onSubmit(salleForm)">
+
+    <p>
+      <label for="name">Nom</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="salle.name" required />
+      <span class="form_error" *ngIf="name.touched && !name.valid">Le nom est obligatoire</span>
+    </p>
+    <p>
+      <label for="voie">Voie</label>
+      <input type="text" name="voie" #voie="ngModel" [(ngModel)]="salle.voie" required />
+      <span class="form_error" *ngIf="voie.touched && !voie.valid">Le voie est obligatoire</span>
+    </p>
+    <p>
+      <label for="ville">Ville</label>
+      <input type="text" name="voie" #ville="ngModel" [(ngModel)]="salle.ville" required />
+      <span class="form_error" *ngIf="ville.touched && !ville.valid">Le ville est obligatoire</span>
+    </p>
+    <p>
+      <label for="code_postal">Code Postal</label>
+      <input type="text" name="code_postal" #code_postal="ngModel" [(ngModel)]="salle.code_postal" required />
+      <span class="form_error" *ngIf="code_postal.touched && !code_postal.valid">Le Code Postal est obligatoire</span>
+    </p>
+    <p>
+      <label for="capacite">Capacité</label>
+      <input type="text" name="capacite" #capacite="ngModel" [(ngModel)]="salle.capacite" required />
+      <span class="form_error" *ngIf="capacite.touched && !capacite.valid">Le Capacité est obligatoire</span>
+    </p>
+    <p>
+      <label for="type_evenement">Type d'evenement</label>
+    <select id="type" name="type_evenement" #type_evenement="ngModel" [(ngModel)]="salle.type_evenement" >
+    <option value="Mariages">Mariages</option>
+    <option value="Reunions Familiales">Réunions</option>
+    <option value="Séminaires">Séminaires</option>
+    <option value="Réceptions">Réceptions</option>
+    <option value="Baptêmes">Baptêmes</option>
+    </select>
+  </p>
+    <p>
+      <label for="services_proposes">Services Proposés</label>
+      <input type="text" name="services_proposes" #services_proposes="ngModel" [(ngModel)]="salle.services_proposes"
+        required />
+      <span class="form_error" *ngIf="services_proposes.touched && !services_proposes.valid">Les Services Proposés sont obligatoires</span>
+    </p>
+    <p>
+      <label for="description">Description</label>
+      <textarea name="description" #description="ngModel" [(ngModel)]="salle.description" required></textarea>
+      <span class="form_error" *ngIf="description.touched && !description.valid">La Description est obligatoire</span>
+    </p>
+    <p>
+    <label for="disponibilite">Disponibilité</label>
+      <input type="text" name="disponibilite" #disponibilite="ngModel" [(ngModel)]="salle.disponibilite"
+        required />
+      <span class="form_error" *ngIf="disponibilite.touched && disponibilite.valid">La disponibilité est obligatoire</span>
+    </p>
+
+    <P>
+      <label for="image">Salle Image</label>
+      <span class="image" *ngIf="salle.image" style="float: none;">
+        <img src="{{url+'get-image/'+salle.image}}" style="width:100px;" />
+
+      </span><br />
+      <input type="file" name="image" placeholder="upload image" (change)="fileChangeEvent($event)" />
+
+
+
+      <input type="submit" value="Send" [disabled]="!salleForm.form.valid" />
+
+
+  </form>
+</div>
+

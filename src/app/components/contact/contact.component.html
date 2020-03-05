@@ -1,0 +1,45 @@
+
+  <div class="container" *ngIf="contact">
+  <h2>Formulaire de Contact</h2><br/>
+  <p>Si vous avez rencontré un problème lors de votre experience avec EasySalle, veuillez nous envoyer un message</p>
+  <div class="message succes" *ngIf="status == 'succes'">
+    Le message a bien été éffectué
+  </div>
+
+  <form  #contactForm="ngForm"  (ngSubmit)="onSubmit(contactForm)">
+  <p><label for="nom_contact">Nom</label>
+      <input type="text" name="nom_contact" #nom_contact="ngModel" [(ngModel)]="contact.nom_contact" required />
+      <span class="form_error" *ngIf="nom_contact.touched && !nom_contact.valid">Le nom est obligatoire</span>
+    </p>
+    <p>
+      <label for="prenom">Prenom</label>
+      <input type="text" name="prenom" #prenom="ngModel" [(ngModel)]="contact.prenom" required />
+      <span class="form_error" *ngIf="prenom.touched && !prenom.valid">Le prenom est obligatoire</span>
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="contact.email" required />
+      <span class="form_error" *ngIf="email.touched && ! email.valid">L'email est obligatoire</span>
+    </p>
+    <p>
+      <label for="telephone">Téléphone</label>
+      <input type="text" name="telephone" #telephone="ngModel" [(ngModel)]="contact.telephone" required />
+      <span class="form_error" *ngIf="telephone.touched && !telephone.valid">Le numero de téléphone est obligatoire</span>
+    </p>
+    <p>
+      <label for="sujet">Sujet</label>
+      <input type="text" name="sujet" #sujet="ngModel" [(ngModel)]="contact.adresse" required />
+      <span class="form_error" *ngIf="sujet.touched && !sujet.valid">Le sujet est obligatoire</span>
+    </p>
+    <p>
+      <label for="message">Message</label>
+      <textarea name="message" #message="ngModel" [(ngModel)]="contact.message" required></textarea>
+      <span class="form_error" *ngIf="message.touched && !message.valid">Le Message sest obligatoire</span>
+    </p>
+   
+    <input type="submit" value="Envoyer" [disabled]="!contactForm.form.valid" />
+</form>
+</div>
+
+
+

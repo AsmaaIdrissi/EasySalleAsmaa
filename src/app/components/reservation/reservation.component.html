@@ -1,0 +1,56 @@
+<div class="container" *ngIf="reservation">
+  <h2>{{title}}</h2>
+  <div class="message succes" *ngIf="status == 'succes'">
+    La reservation a bien été éffectué
+  </div>
+
+  <div class="message failed" *ngIf="status == 'failed'">
+    La reservation a échoué
+  </div>
+
+
+  <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
+
+    <p>
+      <label for="user_nom">Nom</label>
+      <input type="text" name="user_nom" #user_nom="ngModel" [(ngModel)]="reservation.user_nom" required />
+      <span class="form_error" *ngIf="user_nom.touched && !user_nom.valid">Le nom est obligatoire</span>
+    </p>
+    <p>
+      <label for="prenom">Prenom</label>
+      <input type="text" name="prenom" #prenom="ngModel" [(ngModel)]="reservation.prenom" required />
+      <span class="form_error" *ngIf="prenom.touched && !prenom.valid">Le prenom est obligatoire</span>
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" name="email" #email="ngModel" [(ngModel)]="reservation.email" required />
+      <span class="form_error" *ngIf="email.touched && ! email.valid">L'email est obligatoire</span>
+    </p>
+    <p>
+      <label for="telephone">Téléphone</label>
+      <input type="text" name="telephone" #telephone="ngModel" [(ngModel)]="reservation.telephone" required />
+      <span class="form_error" *ngIf="telephone.touched && !telephone.valid">Le numero de téléphone est obligatoire</span>
+    </p>
+    <p>
+      <label for="user_adresse">Adresse</label>
+      <input type="text" name="user_adresse" #user_adresse="ngModel" [(ngModel)]="reservation.user_adresse" required />
+      <span class="form_error" *ngIf="user_adresse.touched && !user_adresse.valid">L'adresse est obligatoire</span>
+    </p>
+    <p>
+      <label for="date_de_debut">Date de debut</label>
+      <input type="date" name="date_de_debut" #date_de_debut="ngModel" [(ngModel)]="reservation.date_de_debut"
+        required />
+      <span class="form_error" *ngIf="date_de_debut.touched && !date_de_debut.valid">La date de debut est obligatoire</span>
+    </p>
+    <p>
+      <label for="date_de_fin">Date de Fin</label>
+      <input type="date" name="date_de_fin" #date_de_fin="ngModel" [(ngModel)]="reservation.date_de_fin"
+        required />
+      <span class="form_error" *ngIf="date_de_fin.touched && !date_de_fin.valid">La date de fin obligatoire</span>
+    </p>
+    
+   
+    <input type="submit" value="Reserver" [disabled]="!reservationForm.form.valid" />
+</form>
+</div>
+
