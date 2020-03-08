@@ -1,14 +1,10 @@
 <aside id="sidebar">
-  <div id="nav-blog" class="sidebar-item">
-    <h3>Aller dans la liste de salles</h3>
-    <a href="#" class="btn btn-success">Liste de Salles</a>
-  </div>
-  <div id="search" class="sidebar-item">
-    <h3>Rechercher</h3>
-    <p>Trouve ici la salle que tu cherches..</p>
+  <div class="container">
+   
+    <h3>Trouve ici la salle que tu cherches..</h3>
 
-    <form>
-      <input type="text" name="search" />
+    <form #searchForm="ngForm" (ngSubmit)="goSearch()">
+      <input type="text" name="search" [(ngModel)]="searchString"/>
       <input type="submit" name="submit" value="buscar" class="btn btn-success" />
     </form>
   </div>

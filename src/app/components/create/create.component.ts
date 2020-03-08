@@ -31,7 +31,7 @@ public save_salle;
   ) 
   { 
     this.title = "Ajouter une Salle";
-    this.salle = new Salle('', '', '', '', '', '', '', '','','','');
+    this.salle = new Salle('', '', '', '', '', '', '', '','');
   }
 
   ngOnInit() {
@@ -76,5 +76,6 @@ public save_salle;
   fileChangeEvent(fileInput:any){
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
+ 
 
 }

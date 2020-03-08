@@ -3,16 +3,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Salle } from '../models/salle';
 import { Global } from './global';
+import { catchError, tap, map} from 'rxjs/operators';
 
 
 @Injectable()
 export class SalleService{
-    public url: string;
+    public url: 'http://localhost:8080/salle';
+    public salle:Salle;
+   
+    
 
     constructor(
-        private _http: HttpClient
+        private _http: HttpClient,
+      
     ){
-        this.url=Global.url;
+        //this.url=Global.url;
 
     }
 
@@ -26,10 +31,16 @@ export class SalleService{
         return this._http.post(this.url+'save-salle', params, {headers: headers});
     }
 
-    getSalles(): Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(this.url+'salles', {headers: headers});
-    }
+  
+    findAll(): Observable<Salle[]>{  
+        let headers= new HttpHeaders().set('Content-Type', 'application/json');             
+                return this._http.get<Salle[]>('http://localhost:8080/salle/all', {headers: headers})          
+        }
+      
+            
+            
+            
+    
     getSalle(id): Observable<any>{
         let headers= new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.get(this.url+'salle/'+id, {headers: headers});

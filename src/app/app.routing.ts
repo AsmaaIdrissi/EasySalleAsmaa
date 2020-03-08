@@ -27,6 +27,7 @@ const appRoutes: Routes=[
     {path: 'salle/:id', component: DetailComponent},
     {path: 'edit-salle/:id', component: EditComponent},
     {path: 'reservation', component:ReservationComponent},
+    {path: 'chercher', component: SidebarComponent},
     {path: '**', component: ErrorComponent}
 
 ];

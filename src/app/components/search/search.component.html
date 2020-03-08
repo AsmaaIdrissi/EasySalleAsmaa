@@ -1,15 +1,20 @@
 
-  <div id="search" class="sidebar-item">
+    <section id="content"><h2>{{title}}</h2>
+      <div class="container">
+
+        <ul>
+          <li *ngFor="let salle of salles" class="salle">
+              <a [routerLink]="['/salle', salle._id]">
+              <div class="image"> <img src="{{ url+'get-image/'+salle.image}}" *ngIf="salle.image"/></div>
+          <h3>{{ salle.name }}</h3>
+          <p>{{ salle.capacite }}</p>
+          <p>{{ salle.type_evenement }}</p>
+        </a>
+          </li>
+        </ul>
+        </div>
+
+    </section>
     
-
-   <div class="container">
-     <h2>{{title}}</h2>
-<app-salles>
-  [salles]="salles"
-</app-salles>
-   </div>
-    <app-sidebar></app-sidebar>
-  </div>
-
 
 

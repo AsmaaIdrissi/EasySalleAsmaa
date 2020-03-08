@@ -18,7 +18,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
   goSearch(){
-   this._route.navigate(['/search:/', this.searchString]);
+    alert(this.searchString);;
+   this._route.navigate(['/chercher', this.searchString]);
   }
 
 }
