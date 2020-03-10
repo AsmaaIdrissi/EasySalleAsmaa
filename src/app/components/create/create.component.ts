@@ -31,7 +31,7 @@ public save_salle;
   ) 
   { 
     this.title = "Ajouter une Salle";
-    this.salle = new Salle('', '', '', '', '', '', '', '','');
+    this.salle = new Salle('', '', '', '', '', '', '', '','', '');
   }
 
   ngOnInit() {

@@ -3,7 +3,7 @@
   <ul>
     <li *ngFor="let salle of salles$" class="salle">
         <a [routerLink]="['/salle', salle._id]">
-        <div class="image"> <img src="{{ url+'/'+salle.image}}" *ngIf="salle.image"/></div>
+        <div class="image"> <img src="{{salle.picture}}" *ngIf="salle.picture"/></div>
     <h3>{{ salle.name }}</h3>
     <p>{{ salle.capacite }}</p>
     <p>{{ salle.typeEvenemment }}</p>
