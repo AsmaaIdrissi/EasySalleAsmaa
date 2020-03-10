@@ -14,8 +14,9 @@ import { EditComponent } from './components/edit/edit.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { SearchComponent } from './components/search/search.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
-
+import { LoginComponent } from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {HomeLoginComponent} from './components/homeLogin/homeLogin.component';
 
 const appRoutes: Routes=[
     {path:'', component: AboutComponent},
@@ -27,7 +28,11 @@ const appRoutes: Routes=[
     {path: 'salle/:id', component: DetailComponent},
     {path: 'edit-salle/:id', component: EditComponent},
     {path: 'reservation', component:ReservationComponent},
+    {path: 'login',component:LoginComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'homeLogin', component: HomeLoginComponent},
     {path: '**', component: ErrorComponent}
+    
 
 ];
 

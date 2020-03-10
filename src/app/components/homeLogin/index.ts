@@ -1,0 +1,1 @@
+export * from './homeLogin.component';

@@ -1,0 +1,16 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home   </a>
+        <a href=" " class="nav-item nav-link" (click)="logout()" >Logout</a>
+    </div>
+</nav>
+<h1>Bonjour {{currentUser.firstName}}!</h1>
+<p>vous êtes connecté(e)</p>
+<h3>La liste des utilisateurs </h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a href=" " (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul>
