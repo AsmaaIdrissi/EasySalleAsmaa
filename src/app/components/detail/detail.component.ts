@@ -28,6 +28,8 @@ export class DetailComponent implements OnInit {
     this._route.params.subscribe(params => {  //recojo los parametros que me llega por la url
       let id = params.id;
       this.getSalle(id);
+      console.log("___________________"+id);
+      
     });
   }
 
@@ -35,10 +37,13 @@ export class DetailComponent implements OnInit {
   getSalle(id){
     this._salleService.getSalle(id).subscribe(
       response=>{
-          this.salle=response.salle;
+          this.salle=response;
+
+          console.log("_______hhhh_______"+this.salle.picture);
       },
       error=>{
         console.log(<any>error);
+       
       }
     )
   }
@@ -59,9 +64,14 @@ export class DetailComponent implements OnInit {
       })
 
   }
-  redirigerReservation(){
-      this._router.navigate(['/reservation']);
+  redirigerReservation(id){
+    console.log(id);
+      this._router.navigate(['/reservation',id]);
 
+
+  }
+  edirigerReservation(){
+    this._router.navigate(['/reservation']); 
   }
   }
 

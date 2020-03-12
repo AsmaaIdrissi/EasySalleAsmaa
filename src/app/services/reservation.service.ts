@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Reservation } from '../models/reservation';
 import { Global } from './global';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Injectable()
@@ -10,7 +11,8 @@ export class ReservationService{
     public url: string;
 
     constructor(
-        private _http: HttpClient
+        private _http: HttpClient,
+        private route: ActivatedRoute
     ){
         this.url=Global.url;
 
@@ -19,9 +21,12 @@ export class ReservationService{
    
     saveResevation(reservation:Reservation):Observable<any>{
         let params=JSON.stringify(reservation);
+        console.log(params);
+        let id: string
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
-
-        return this._http.post(this.url+'save-reservation', params, {headers: headers});
+this.route.paramMap.subscribe((paramsR)=>{id=paramsR.get('id')})
+        return this._http.post('http://localhost:8080/reservation/reserver?dateDebut='
+        +reservation.dateDebut+'&dateFin='+reservation.dateFin+'&mail='+reservation.email+'&idSalle='+id, {headers: headers});
     }
 
     getReservations(): Observable<any>{

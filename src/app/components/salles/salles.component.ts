@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Salle } from '../../models/salle';
 import { SalleService } from '../../services/salle.service';
-import { Global } from '../../services/global';
+
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -12,31 +12,44 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SallesComponent implements OnInit {
 
- public salles: Salle[];
-    public url:string;
+ salles$: Salle[];
+
   
     constructor(
       private _salleService: SalleService
     ) {
-      this.url=Global.url;
+
     }
   
     ngOnInit() {
-      this.getSalles();
+      this.findAll();
+      
     }
   
-    getSalles(){
-      this._salleService.getSalles().subscribe(response=>{
-        if(response.salles){
-          this.salles=response.salles;
-        }
-            console.log(response);
-      }, 
-      error=>{
-        console.log(<any>error);
-      }
-      );
-  
+    findAll(){
+    
+      this._salleService.findAll().subscribe((data: Salle[]) => {
+            this.salles$ = data;
+            console.log(data);
+          }
+           
+     )
     }
+    getImage(elem) {
+      this._salleService.getOne(elem.img.imageGroupId, 'MEDIUM').subscribe((data: Blob) => {
+              const reader = new FileReader();
+              reader.addEventListener("load", () => {
+                  elem.img.content = reader.result;
+              }, false);
+              if (data) {
+                  reader.readAsDataURL(data);
+              }
+          }
+      )
+  }
+
+  
+    
+   
 
 }

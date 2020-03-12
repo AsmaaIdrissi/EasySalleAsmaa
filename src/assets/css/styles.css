@@ -342,6 +342,7 @@ form input[disabled]{
 
 }
 #sidebar{
+    background:rgba(53, 103, 164, 0.8);
     float: none;
     width: 60%;
     margin:0px auto;

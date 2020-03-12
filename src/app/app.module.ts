@@ -18,7 +18,7 @@ import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 
 
-import { SliderComponent } from './components/slider/slider.component';
+
 import { ResaltadoDirective } from './resaltado.directive';
 import { SliderAboutComponent } from './components/slider-about/slider-about.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
@@ -40,7 +40,6 @@ import {HomeLoginComponent} from './components/homeLogin/homeLogin.component';
     ErrorComponent,
     DetailComponent,
     EditComponent,
-    SliderComponent,
     ResaltadoDirective,
     SliderAboutComponent,
     ReservationComponent,

@@ -1,15 +1,16 @@
 <div class="container" *ngIf="salle">
 
 <div class="image" *ngIf="salle.image">
-   <img src="{{ url+'get-image/'+salle.image}}"/>
+   <img [src]="salle.image"/>
   </div>
 <div class="data" >
 <h1 >{{ salle.name }}</h1>
-<p>{{ salle.description }}</p>
-<p>{{ salle.capacite }}</p>
-<p>{{ salle.type_evenement}}</p>
-<p>{{ salle.ville }}</p><hr/>
-<a href="https://www.google.fr/maps/@44.0467456,4.7808512,14z" class="button-geo">Geolocalisation</a>
+<p>{{ salle.description }}</p><br>
+<p>Capacité :{{ salle.capacite }} personnes.</p>
+<p>Type d'évenement : {{ salle.typeEvenement}}</p>
+<p>Adresse postale : {{ salle.voie }}, {{ salle.ville }}, {{ salle.codePostale }}.</p><hr/>
+
+<a href="https://www.google.com/maps/search/?api=1&query={{salle.geocalisationX}},{{salle.geocalisationY}}" target="_blank" class="button-geo">Geolocalisation</a>
 
 <!--<p *ngIf="confirm == false">
   <a [routerLink]="['/edit-project', project._id]" class="button-edit">Edit</a>
@@ -21,7 +22,7 @@
     <a (click)="setConfirm(false)" class="button-edit">Cancel</a>
     <a (click)="deleteProject(project._id)" class="button-delete">Definitively eliminate</a>
   </p>-->
-  <a (click)="redirigerReservation()" class="button-edit">Reserver</a>
+  <a (click)="redirigerReservation(salle.id)" class="button-edit">Reserver</a>
 
 </div>
 </div>
